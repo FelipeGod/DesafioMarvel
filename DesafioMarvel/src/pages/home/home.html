@@ -1,9 +1,14 @@
 <ion-header>
   <ion-navbar color='darkred'>
-    <ion-title>
+    <ion-title *ngIf='!isSearchBarOpened'>
       <p>Characters</p>
     </ion-title>
-
+    <ion-searchbar *ngIf='isSearchBarOpened' showCancelButton='true' (ionCancel)='isSearchBarOpened=false' (ionInput)="search($event)" placeholder='Name os character'></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf='!isSearchBarOpened' (click)='isSearchBarOpened=true'>
+        <ion-icon name="search" ></ion-icon>
+      </button>
+    </ion-buttons>
     
   </ion-navbar>
 </ion-header>
