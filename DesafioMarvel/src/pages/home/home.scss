@@ -6,16 +6,47 @@ page-home {
         margin: 0;
     }
     ion-navbar p{
-        font-family: 'Barlow Condensed', bold;
+        font-family: 'Barlow Condensed', 'bold';
         font-size: 20px;
         line-height: 24px;
         width: 81px;
         height: 24px;
     }
-    
+    ion-navbar{
+        height: 56px;
+    }
     ion-content{
         width: 100%;
         height: 100%;
         background: color($colors, 'background') !important;
     }
+    ion-searchbar{
+        font-family: 'Barlow', 'Regular';
+        font-size: 16px;
+        line-height: 19px;
+        text-align: left;
+    }
+    ion-searchbar.searchbar-md .searchbar-input{
+        background-color: #b50f16 !important;
+    }
+    ion-searchbar .searchbar-input {
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+    .searchbar-md .searchbar-md-cancel{
+        display: inherit !important;
+    }
+    .button-clear-md-dark{
+        color: #eeeeee !important;
+    }
+    .searchbar-md .searchbar-search-icon{
+        display: none;
+    }
+    .searchbar-md .searchbar-input{
+        color: #eeeeee !important;
+    }
+    .searchbar-has-value.searchbar-has-focus .searchbar-clear-icon{
+        color: #eeeeee !important;
+    }
+    
 }
