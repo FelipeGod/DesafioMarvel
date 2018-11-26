@@ -9,6 +9,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
   public isSearchBarOpened = false;
+  public show = true;
+  public abc: any = [];
 
   public obj: any;
   public heroes: any;
@@ -20,11 +22,24 @@ export class HomePage {
     public HeroSrv: HeroServiceProvider
     ) {
     this.getAllHeroes();
+    this.loadAbc();
   }
 
-  search(): void{
-    console.log('oi');
-    
+  search($event): void{
+    if ($event.srcElement.value) {
+      let length = $event.srcElement.value.length;
+      let value = $event.srcElement.value;
+      if (length > 2) {
+        this.show = false;
+      }else{
+        this.show = true;
+      }
+    }
+  }
+
+  searchBarCancel(){
+    this.isSearchBarOpened = false;
+    this.show = true;
   }
   
   getAllHeroes() {
@@ -33,38 +48,49 @@ export class HomePage {
         this.obj = data;
         this.heroes = this.obj.data.results;
 
-        // for (let i = 0; i < this.heroes.results.length; i++) {
+        for (let i = 1; i < this.heroes.length; i++) {
+          let hero = new Hero();
+          hero.id = this.heroes[i].id;
+          hero.name = this.heroes[i].name;
+          hero.photo = this.heroes[i].thumbnail.path + '.' + this.heroes[i].thumbnail.extension;
+          hero.description = this.heroes[i].description;
+          hero.comics = this.heroes[i].comics.items;
+          hero.stories = this.heroes[i].stories.items;
+          hero.series = this.heroes[i].series.items;
+          hero.firstLetterId = this.getFirstLetterId(hero.name);
 
-        // }
-        let hero = new Hero();
-        hero.id = this.heroes[1].id;
-        hero.name = this.heroes[1].name;
-        hero.photo = this.heroes[1].thumbnail.path + '.' + this.heroes[1].thumbnail.extension;
-        hero.description = this.heroes[1].description;
-        hero.comics = this.heroes[1].comics.items;
-        hero.stories = this.heroes[1].stories.items;
-        hero.series = this.heroes[1].series.items;
-        hero.firstL = this.getFirstLetter(hero.name);
-
-        console.log(this.heroes[1]);
-        console.log(hero);
-        
-        
+          this.ListHeroes.push(hero);
+        }
       });
   }
 
-  getDescription(id: number) {
-    console.log(id);
-    this.navCtrl.push("DescriptionPage", {
-      id: id
-    })
+  getDescription(hero: Hero) {
+    this.navCtrl.push("DescriptionPage", {id: hero});
   }
 
-  getFirstLetter(name: string): string{
+  getFirstLetterId(name: string){
     name = name.charAt(0);
     name = name.toLowerCase();
-    return name;
+    let string = 'abcdefghijklmnopqrstuvwxyz';
+    for (let i = 0; i < string.length; i++) {
+      if (name == string.charAt(i)) {
+        return i;
+      }
+    }
+    return null;
   }
+
+  loadAbc(){
+    let string = 'abcdefghijklmnopqrstuvwxyz';
+    for (let i = 0; i < string.length; i++) {
+      let list = new List();
+      list.letter = string.charAt(i).toUpperCase();
+      list.num = i;
+      this.abc.push(list); 
+    }
+  }
+
+  
   
 
 }
@@ -73,8 +99,12 @@ export class Hero{
   name: string;
   photo: string;
   description: string;
-  comics: [];
-  stories: [];
-  series: [];
-  firstL: string;
+  comics: [any];
+  stories: [any];
+  series: [any];
+  firstLetterId: Number;
+}
+export class List{
+  letter: string;
+  num: Number;
 }

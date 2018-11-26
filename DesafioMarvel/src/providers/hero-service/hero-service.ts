@@ -15,11 +15,13 @@ export class HeroServiceProvider {
       var timestamp = Number(new Date());
       var hash = Md5.hashStr(`${timestamp}85e08fcd50180a3d3dfbc9057aba9756a23cbaae6d61db6a1cba0990492178ca39c4bcfc`);
       
-      this.http.get(`https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=6d61db6a1cba0990492178ca39c4bcfc&hash=${hash}`)
+      this.http.get(`https://gateway.marvel.com:443/v1/public/characters?limit=3&ts=${timestamp}&apikey=6d61db6a1cba0990492178ca39c4bcfc&hash=${hash}`)
       .map(res => res.json())
       .subscribe(data => {
         this.data = data;
         resolve(this.data);
+        console.log(data);
+        
       });
     });
   }

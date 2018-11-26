@@ -3,7 +3,7 @@
     <ion-title *ngIf='!isSearchBarOpened'>
       <p>Characters</p>
     </ion-title>
-    <ion-searchbar *ngIf='isSearchBarOpened' showCancelButton='true' (ionCancel)='isSearchBarOpened=false' (ionInput)="search($event)" placeholder='Name os character'></ion-searchbar>
+    <ion-searchbar animated='true' *ngIf='isSearchBarOpened' showCancelButton='true' (ionCancel)='searchBarCancel()' (ionInput)="search($event)" placeholder='Name os character'></ion-searchbar>
     <ion-buttons end>
       <button ion-button icon-only *ngIf='!isSearchBarOpened' (click)='isSearchBarOpened=true'>
         <ion-icon name="search" ></ion-icon>
@@ -13,43 +13,17 @@
 </ion-header>
 
 <ion-content padding >
-  <!-- <ion-list>
-    <ion-item *ngFor='let hero of heroes'>
-      <ion-avatar item-start>
-        <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}'>
-      </ion-avatar>
-      <h2>{{hero.name}}</h2>
-    </ion-item>
-  </ion-list> -->
 
-  <!-- <ion-content>
-    <ion-item-group>
-      <ion-item-divider color="light">A</ion-item-divider>
-      <ion-item *ngFor='let hero of heroes'>
+  <ion-list *ngFor='let alf of abc'>
+    <ion-item-divider>{{alf.letter}}</ion-item-divider>
+    <div *ngFor='let hero of ListHeroes'>
+      <button ion-item *ngIf='hero.firstLetterId == alf.num' (click)='getDescription(hero)'>
         <ion-avatar item-start>
-          <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}'>
+          <img src='{{hero.photo}}'>
         </ion-avatar>
         <h2>{{hero.name}}</h2>
-      </ion-item>
-    </ion-item-group>
-  </ion-content> -->
-
-  <!-- <ion-content>
-    <ion-item-group>
-      <ion-item-divider color="light">A</ion-item-divider>
-      <button ion-button >Angola</button>
-      <ion-item>Argentina</ion-item>
-    </ion-item-group>
-  </ion-content> -->
-
-  <ion-list>
-    <ion-item-divider>A</ion-item-divider>
-    <button ion-item *ngFor='let hero of heroes'>
-      <ion-avatar item-start>
-        <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}'>
-      </ion-avatar>
-      <h2>{{hero.name}}</h2>
-    </button>
+      </button>
+    </div>
   </ion-list>
 
 </ion-content>
