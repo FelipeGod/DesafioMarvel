@@ -13,9 +13,9 @@ export class HeroServiceProvider {
   load(): Promise<any>{
     return new Promise(resolve => {
       var timestamp = Number(new Date());
-      var hash = Md5.hashStr("ebd407c102ea3f1262b8dd370cfa04d4a132a867d8b23f3429d72898aaffd1a321761b4a");
+      var hash = Md5.hashStr(`${timestamp}85e08fcd50180a3d3dfbc9057aba9756a23cbaae6d61db6a1cba0990492178ca39c4bcfc`);
       
-      this.http.get(`https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&orderBy=name&limit=20&apikey=d8b23f3429d72898aaffd1a321761b4a&hash=${hash}`)
+      this.http.get(`https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=6d61db6a1cba0990492178ca39c4bcfc&hash=${hash}`)
       .map(res => res.json())
       .subscribe(data => {
         this.data = data;
@@ -27,9 +27,9 @@ export class HeroServiceProvider {
   getDescription(id: Number): Promise<any>{
     return new Promise(resolver => {
       var timestamp = Number(new Date());
-      var hash = Md5.hashStr("ebd407c102ea3f1262b8dd370cfa04d4a132a867d8b23f3429d72898aaffd1a321761b4a");
+      var hash = Md5.hashStr("85e08fcd50180a3d3dfbc9057aba9756a23cbaae");
 
-      this.http.get(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=${timestamp}&orderBy=name&limit=20&apikey=d8b23f3429d72898aaffd1a321761b4a&hash=${hash}`)
+      this.http.get(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=${timestamp}&orderBy=name&limit=20&apikey=6d61db6a1cba0990492178ca39c4bcfc&hash=${hash}`)
       .map(res => res.json())
       .subscribe(data => {
         this.data = data;
