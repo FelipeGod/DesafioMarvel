@@ -24,7 +24,7 @@ export class HeroServiceProvider {
     });
   }
 
-  getDescription(): Promise<any>{
+  getDescription(id: Number): Promise<any>{
     return new Promise(resolver => {
       var timestamp = Number(new Date());
       var hash = Md5.hashStr("ebd407c102ea3f1262b8dd370cfa04d4a132a867d8b23f3429d72898aaffd1a321761b4a");

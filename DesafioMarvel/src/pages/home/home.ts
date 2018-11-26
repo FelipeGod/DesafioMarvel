@@ -1,3 +1,4 @@
+import { HeroServiceProvider } from './../../providers/hero-service/hero-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -9,7 +10,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HomePage {
   public isSearchBarOpened = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public HeroSrv: HeroServiceProvider
+    ) {
   }
 
   search(): void{
