@@ -9,10 +9,47 @@
         <ion-icon name="search" ></ion-icon>
       </button>
     </ion-buttons>
-    
   </ion-navbar>
 </ion-header>
 
 <ion-content padding >
-  
+  <!-- <ion-list>
+    <ion-item *ngFor='let hero of heroes'>
+      <ion-avatar item-start>
+        <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}'>
+      </ion-avatar>
+      <h2>{{hero.name}}</h2>
+    </ion-item>
+  </ion-list> -->
+
+  <!-- <ion-content>
+    <ion-item-group>
+      <ion-item-divider color="light">A</ion-item-divider>
+      <ion-item *ngFor='let hero of heroes'>
+        <ion-avatar item-start>
+          <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}'>
+        </ion-avatar>
+        <h2>{{hero.name}}</h2>
+      </ion-item>
+    </ion-item-group>
+  </ion-content> -->
+
+  <!-- <ion-content>
+    <ion-item-group>
+      <ion-item-divider color="light">A</ion-item-divider>
+      <button ion-button >Angola</button>
+      <ion-item>Argentina</ion-item>
+    </ion-item-group>
+  </ion-content> -->
+
+  <ion-list>
+    <ion-item-divider>A</ion-item-divider>
+    <button ion-item *ngFor='let hero of heroes'>
+      <ion-avatar item-start>
+        <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}'>
+      </ion-avatar>
+      <h2>{{hero.name}}</h2>
+    </button>
+  </ion-list>
+
 </ion-content>

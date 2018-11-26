@@ -6,11 +6,12 @@ page-home {
         margin: 0;
     }
     ion-navbar p{
-        font-family: 'Barlow Condensed', 'bold';
+        font-family: 'Barlow Condensed', Bold;
         font-size: 20px;
         line-height: 24px;
         width: 81px;
         height: 24px;
+        text-align: left;
     }
     ion-navbar{
         height: 56px;
@@ -48,5 +49,22 @@ page-home {
     .searchbar-has-value.searchbar-has-focus .searchbar-clear-icon{
         color: #eeeeee !important;
     }
+    .item-divider-md{
+        color: #ffffff;
+        font-family: 'Barlow', Bold;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: left;
+        background-color: color($colors, 'background') !important;
+    }
+    .item-block{
+        background-color: color($colors, 'background');
+        color:rgba(255, 255, 255, 0.87);
+    }
+    .item h2{
+        font-size: 16px;
+        font-family: 'Barlow Condensed', regular;
+    }
     
+
 }
