@@ -35,7 +35,7 @@ export class HeroServiceProvider {
     });
   }
 
-  getDescription(id: Number){
+  getDescription(id: Number): Promise<any>{
     let loading = this.LoadCtrl.create({
       content: 'Loading...',
       spinner: 'dots'
@@ -53,6 +53,20 @@ export class HeroServiceProvider {
         resolver(this.data);
         loading.dismiss();
       });
+    });
+  }
+
+  getImg(link: string): Promise<any>{
+    return new Promise(resolver => {
+      var timestamp = Number(new Date());
+      var hash = Md5.hashStr(`${timestamp}85e08fcd50180a3d3dfbc9057aba9756a23cbaae6d61db6a1cba0990492178ca39c4bcfc`);
+
+      this.http.get(`${link}?ts=${timestamp}&apikey=6d61db6a1cba0990492178ca39c4bcfc&hash=${hash}`)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolver(this.data);
+        });
     });
   }
 
