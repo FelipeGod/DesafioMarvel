@@ -12,12 +12,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
-
+<ion-content padding overflow-scroll=”true” style="height:100vh">
   <ion-list *ngFor='let alf of abc'>
     <ion-item-divider>{{alf.letter}}</ion-item-divider>
     <div *ngFor='let hero of ListHeroes'>
-      <button ion-item *ngIf='hero.firstLetterId == alf.num' (click)='getDescription(hero)'>
+      <button ion-item *ngIf='hero.firstLetterId == alf.num' (click)='getDescription(hero.id)'>
         <ion-avatar item-start>
           <img src='{{hero.photo}}'>
         </ion-avatar>
@@ -25,5 +24,5 @@
       </button>
     </div>
   </ion-list>
-
+  
 </ion-content>

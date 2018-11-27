@@ -25,17 +25,17 @@ export class HomePage {
     this.loadAbc();
   }
 
-  search($event): void{
-    if ($event.srcElement.value) {
-      let length = $event.srcElement.value.length;
-      let value = $event.srcElement.value;
-      if (length > 2) {
-        this.show = false;
-      }else{
-        this.show = true;
-      }
-    }
-  }
+  // search($event): void{
+  //   if ($event.srcElement.value) {
+  //     let length = $event.srcElement.value.length;
+  //     let value = $event.srcElement.value;
+  //     if (length > 2) {
+  //       this.show = false;
+  //     }else{
+  //       this.show = true;
+  //     }
+  //   }
+  // }
 
   searchBarCancel(){
     this.isSearchBarOpened = false;
@@ -64,9 +64,14 @@ export class HomePage {
       });
   }
 
-  getDescription(hero: Hero) {
-    this.navCtrl.push("DescriptionPage", {id: hero});
+  getDescription(id: Number) {
+    this.HeroSrv.getDescription(id)
+    .then( data => {
+      this.navCtrl.push("DescriptionPage", {data: data});
+    })
   }
+
+
 
   getFirstLetterId(name: string){
     name = name.charAt(0);
@@ -89,6 +94,7 @@ export class HomePage {
       this.abc.push(list); 
     }
   }
+
 
   
   
