@@ -2,4 +2,19 @@
   <button ion-button clear (click)='close()' icon-only>
     <ion-icon name="md-arrow-back" color='seta'></ion-icon>
   </button>
+  
+  
+  <ion-avatar item-start>
+    <img src="{{hero.photo}}">
+  </ion-avatar>
+
+  <ion-item class='name'>
+    <h2>{{hero.name}}</h2>
+  </ion-item>
+
+  <ion-item class='description' text-wrap>
+    {{hero.description}}
+  </ion-item>
+  
+  
 </ion-content>
